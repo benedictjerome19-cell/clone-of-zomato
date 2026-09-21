@@ -1,0 +1,174 @@
+/* =====================================================
+   GLOBAL VARIABLES & RESET (FLAT DESIGN, NO 3D)
+   ===================================================== */
+:root {
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --primary: #ea580c;
+    --primary-hover: #c2410c;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =====================================================
+   TYPOGRAPHY & UTILITIES
+   ===================================================== */
+h1, h2, h3 { color: #0f172a; margin-bottom: 0.5rem; }
+.section-title { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+.alert-message { padding: 0.75rem; border-radius: 6px; margin-top: 1rem; text-align: center; font-size: 0.9rem; }
+.alert-success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.alert-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+/* =====================================================
+   BUTTONS (FLAT, NO SHADOW HOVERS)
+   ===================================================== */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.2s; /* Simple color transition only */
+}
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-primary { background: var(--primary); color: #fff; width: 100%; }
+.btn-primary:hover:not(:disabled) { background: var(--primary-hover); }
+.btn-outline-sm { background: transparent; border: 1px solid var(--border); padding: 0.4rem 0.8rem; font-size: 0.85rem; border-radius: 6px; }
+.btn-outline-sm:hover { background: #f1f5f9; }
+.btn-add { border: 1px solid var(--primary); background: transparent; color: var(--primary); width: 100%; padding: 0.5rem; border-radius: 6px; margin-top: 1rem; }
+.btn-add:hover:not(:disabled) { background: var(--primary); color: #fff; }
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+}
+.brand { font-size: 1.25rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.welcome-badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+.welcome-avatar { background: #e2e8f0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+/* =====================================================
+   HERO BANNER
+   ===================================================== */
+.hero-banner {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #fff7ed;
+    border-bottom: 1px solid var(--border);
+}
+.hero-tag { font-size: 0.9rem; color: var(--primary); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.hero-art { font-size: 2rem; margin-top: 1rem; letter-spacing: 0.5rem; }
+
+/* =====================================================
+   LAYOUT (MAIN, CART, AUTH)
+   ===================================================== */
+.main-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; padding: 2rem 5%; max-width: 1400px; margin: 0 auto; }
+@media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+.auth-container { display: flex; justify-content: center; padding: 4rem 1rem; }
+.auth-card { background: var(--bg-card); padding: 2rem; border-radius: 8px; width: 100%; max-width: 400px; border: 1px solid var(--border); }
+.auth-header { text-align: center; margin-bottom: 1.5rem; }
+.auth-footer { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted); }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 600; }
+.form-control { width: 100%; padding: 0.6rem; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; }
+
+/* =====================================================
+   CATEGORIES & AI
+   ===================================================== */
+.category-section { border-bottom: 1px solid var(--border); background: var(--bg-card); }
+.category-tabs { display: flex; gap: 0.75rem; padding: 1rem 5%; overflow-x: auto; max-width: 1400px; margin: 0 auto; }
+.category-tab { padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 20px; background: transparent; cursor: pointer; white-space: nowrap; font-size: 0.9rem; }
+.category-tab.active { background: var(--text-main); color: #fff; border-color: var(--text-main); }
+.ai-assistant-card { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+.ai-header { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+.ai-input-wrapper { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.ai-input { flex: 1; padding: 0.6rem; border: 1px solid var(--border); border-radius: 6px; }
+.ai-quick-prompts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ai-chip { background: #fff; border: 1px solid var(--border); padding: 0.3rem 0.6rem; border-radius: 16px; font-size: 0.8rem; cursor: pointer; }
+
+/* =====================================================
+   FOOD CARDS (STATIC 2D - AS REQUESTED)
+   ===================================================== */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+.menu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.food-image-wrap { width: 100%; height: 160px; background: #f1f5f9; position: relative; }
+.food-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+.category-badge { position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.9); padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; border: 1px solid var(--border); }
+.menu-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
+.menu-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.item-name { font-weight: bold; font-size: 1.05rem; }
+.item-price { font-weight: bold; color: var(--primary); }
+.item-desc { font-size: 0.85rem; color: var(--text-muted); flex: 1; }
+
+/* =====================================================
+   CART & CHECKOUT
+   ===================================================== */
+.cart-panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; position: sticky; top: 1.5rem; }
+.cart-badge { background: var(--primary); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; vertical-align: middle; margin-left: 0.5rem; }
+.empty-cart-msg { text-align: center; color: var(--text-muted); padding: 2rem 0; }
+.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.cart-summary { margin: 1.5rem 0; }
+.cart-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
+.cart-total { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; border-top: 1px solid var(--border); padding-top: 0.75rem; margin-top: 0.5rem; }
+.free-tag { color: #16a34a; font-weight: bold; }
+
+/* =====================================================
+   MODALS (PAYMENT & SUCCESS)
+   ===================================================== */
+.modal-overlay, .success-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 100; }
+.modal-overlay.active, .success-overlay.active { display: flex; }
+.modal { background: var(--bg-card); padding: 1.5rem; border-radius: 8px; width: 100%; max-width: 450px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.modal-close { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
+.payment-total-banner { background: #f8fafc; border: 1px solid var(--border); padding: 1rem; border-radius: 6px; display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 1rem; }
+.payment-options { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.payment-option { display: flex; align-items: center; padding: 1rem; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; background: var(--bg-card); }
+.payment-option.selected { border-color: var(--primary); background: #fff7ed; }
+.pay-icon { font-size: 1.5rem; margin-right: 1rem; }
+.pay-info flex { 1; }
+.pay-check { margin-left: auto; color: var(--primary); font-weight: bold; }
+.pay-detail-box, .upi-box, .card-preview { background: #f8fafc; border: 1px solid var(--border); padding: 1rem; border-radius: 6px; display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.success-box { background: var(--bg-card); padding: 3rem; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
+.success-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+/* =====================================================
+   MISCELLANEOUS
+   ===================================================== */
+#welcomeToast { position: fixed; bottom: 20px; right: 20px; background: var(--text-main); color: #fff; padding: 1rem; border-radius: 6px; transition: opacity 0.4s; z-index: 99; }
+#welcomeToast.hide { opacity: 0; pointer-events: none; }
+.loading-spinner { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted); }

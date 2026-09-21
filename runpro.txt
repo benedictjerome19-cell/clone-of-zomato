@@ -1,0 +1,40 @@
+-- to run the project
+cd C:\benedictmart\benedictmart\jerome_zom
+
+$env:CATALINA_HOME = "C:\benedictmart\benedictmart\jerome_zom\tomcat"
+
+& "C:\benedictmart\benedictmart\jerome_zom\tomcat\bin\shutdown.bat"
+Stop-Process -Name java -Force -ErrorAction SilentlyContinue
+
+mvn clean package
+
+Remove-Item -Recurse -Force "C:\benedictmart\benedictmart\jerome_zom\tomcat\webapps\benedictjeromemart" -ErrorAction SilentlyContinue
+
+Copy-Item "C:\benedictmart\benedictmart\jerome_zom\target\benedictjeromemart.war" -Destination "C:\benedictmart\benedictmart\jerome_zom\tomcat\webapps\" -Force
+
+
+& "C:\benedictmart\benedictmart\jerome_zom\tomcat\bin\startup.bat"
+
+
+-- db
+# Navigate to project root
+cd C:\benedictmart\benedictmart\jerome_zom
+
+# Start H2 Web Server Console using the bundled H2 jar
+java -cp "target\benedictjeromemart\WEB-INF\lib\h2-2.2.224.jar" org.h2.tools.Server -web -browser
+
+
+
+
+--url
+
+Here are the localhost URLs to access your deployed **Benedict & Jerome Mart** web application on your local Tomcat server:
+
+* **Home Page**: `http://localhost:8080/benedictjeromemart/home.jsp`
+* **Login Page**: `http://localhost:8080/benedictjeromemart/login.jsp`
+* **Register Page**: `http://localhost:8080/benedictjeromemart/register.jsp`
+* **Menu Page**: `http://localhost:8080/benedictjeromemart/menu.jsp`
+* **Orders Page**: `http://localhost:8080/benedictjeromemart/orders.jsp`
+* **Restaurant Menu Management**: `http://localhost:8080/benedictjeromemart/manage-menu.jsp` *(Requires logging in with a `RESTAURANT_OWNER` role)*
+
+Let me know if you are ready to work on the next coding feature or if you need any adjustments to your project code!
