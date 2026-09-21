@@ -58,6 +58,18 @@ public class RegisterServlet extends HttpServlet {
             envelope.add("error", error);
 
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } catch (Exception e) {
+            // Catch-all for database connection failures, SQL errors, or unexpected issues
+            e.printStackTrace();
+            JsonObject error = new JsonObject();
+            error.addProperty("code", "SERVER_ERROR");
+            error.addProperty("message", "Database or server error: " + e.getMessage());
+
+            envelope.addProperty("success", false);
+            envelope.add("data", null);
+            envelope.add("error", error);
+
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
 
         resp.getWriter().write(gson.toJson(envelope));
