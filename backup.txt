@@ -7,11 +7,6 @@
 
     <display-name>BenedictJeromeMart</display-name>
 
-    <!-- Define the default landing page when users visit the root URL -->
-    <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
-    </welcome-file-list>
-
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
