@@ -1,4 +1,4 @@
-package com.yourname.yournameeats.dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,14 +14,14 @@ public class DBConnection {
                 // Load H2 driver
                 Class.forName("org.h2.Driver");
                 
-                // Use a portable relative path that works on both Windows and Linux containers
+                // Portable relative path for H2 database
                 String jdbcURL = "jdbc:h2:file:./data/zomatodb;AUTO_SERVER=TRUE";
                 String user = "sa";
                 String password = "";
                 
                 connection = DriverManager.getConnection(jdbcURL, user, password);
                 
-                // Automatically create tables if they don't exist yet (prevents "Table not found" errors)
+                // Initialize tables on startup
                 initializeDatabase(connection);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -32,12 +32,14 @@ public class DBConnection {
 
     private static void initializeDatabase(Connection conn) {
         try (Statement stmt = conn.createStatement()) {
-            // Create users table for registration and login
+            // Comprehensive users table schema covering all standard registration fields
             String createUsersTable = "CREATE TABLE IF NOT EXISTS users (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY, " +
-                    "fullname VARCHAR(255), " +
+                    "name VARCHAR(255), " +
                     "email VARCHAR(255) UNIQUE, " +
                     "password VARCHAR(255), " +
+                    "phone VARCHAR(50), " +
+                    "address VARCHAR(500), " +
                     "role VARCHAR(50))";
             stmt.execute(createUsersTable);
         } catch (SQLException e) {
